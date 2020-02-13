@@ -10,7 +10,6 @@ export class ServiceComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    throw new Error('I am an error');
   }
 
 }

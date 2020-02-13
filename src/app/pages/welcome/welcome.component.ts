@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NotificationService} from '../../services/notification.service';
 
 @Component({
   selector: 'app-welcome',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private notify: NotificationService) { }
 
   ngOnInit() {
+  }
+
+  onBack() {
+    this.notify.success('Button Pressed', 'You successfully hit the back button');
   }
 
 }
