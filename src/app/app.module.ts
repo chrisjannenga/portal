@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { ErrorService } from './error.service';
 
 registerLocaleData(en);
 
@@ -26,7 +27,7 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US }, { provide: ErrorHandler, useClass: ErrorService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
