@@ -1,3 +1,18 @@
-<pre *ngIf="auth.userProfile$ | async as profile">
-<code>{{ profile | json }}</code>
-</pre>
+<div *ngIf="profile">
+<nz-page-header nzBackIcon>
+  <nz-page-header-title>Profile</nz-page-header-title>
+  <nz-page-header-tags>
+    <nz-tag [nzColor]="profile.email_verified ? 'green' : 'red'">{{profile.email_verified ? 'Verified' : 'Please Verify Your Account'}}</nz-tag>
+  </nz-page-header-tags>
+  <nz-page-header-extra>
+    <button nz-button nzType="primary">Edit</button>
+  </nz-page-header-extra>
+</nz-page-header>
+
+
+  <nz-avatar [nzSize]="120" nzIcon="user" [nzSrc]="profile.picture"></nz-avatar>
+
+<code >{{ profile | json }}</code>
+
+</div>
+<nz-skeleton [nzActive]="true" *ngIf="loading"></nz-skeleton>
