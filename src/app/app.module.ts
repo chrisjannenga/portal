@@ -12,6 +12,10 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { ErrorService } from './error.service';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 registerLocaleData(en);
 
@@ -27,7 +31,15 @@ registerLocaleData(en);
     IconsProviderModule,
     NgZorroAntdModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }, { provide: ErrorHandler, useClass: ErrorService }],
   bootstrap: [AppComponent]
