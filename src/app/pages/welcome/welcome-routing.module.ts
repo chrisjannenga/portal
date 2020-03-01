@@ -4,7 +4,7 @@ import { WelcomeComponent } from './welcome.component';
 import {AuthGuard} from '../../guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: WelcomeComponent, canActivate: [ AuthGuard ] },
+  { path: '', component: WelcomeComponent },
 ];
 
 @NgModule({
